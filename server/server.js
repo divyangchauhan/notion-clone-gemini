@@ -20,8 +20,7 @@ app.get('/', (req, res) => {
 
 // Mount Routes
 app.use('/api/users', require('./routes/userRoutes'));
-
-// TODO: Add routes for documents
+app.use('/api/documents', require('./routes/documentRoutes')); // Mount document routes
 
 // TODO: Add Error Handling Middleware
 
