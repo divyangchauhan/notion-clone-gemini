@@ -10,14 +10,20 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(express.json());
+app.use(express.json()); // for parsing application/json
+app.use(express.urlencoded({ extended: false })); // for parsing application/x-www-form-urlencoded
 
 // Basic Route
 app.get('/', (req, res) => {
   res.send('Notion Clone API Running!');
 });
 
-// TODO: Add API routes (e.g., users, documents)
+// Mount Routes
+app.use('/api/users', require('./routes/userRoutes'));
+
+// TODO: Add routes for documents
+
+// TODO: Add Error Handling Middleware
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
