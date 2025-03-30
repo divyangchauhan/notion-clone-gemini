@@ -76,18 +76,31 @@ const loginUser = async (req, res) => {
   }
 };
 
-// @desc    Get user data (Example of a protected route)
+// @desc    Get user profile
 // @route   GET /api/users/me
 // @access  Private
-// const getMe = async (req, res) => {
-//   // We get req.user from the protect middleware
-//   // const user = await User.findById(req.user.id).select('-password');
-//   // res.status(200).json(user);
-//   res.status(200).json({ message: 'Get Me route placeholder'}) // Placeholder
-// };
+const getUserProfile = async (req, res) => {
+    // The user object is attached to req by the protect middleware
+    // We don't need to send the token back here
+    try {
+         // Re-fetch user data to ensure it's up-to-date (optional, depends on needs)
+         // const user = await User.findById(req.user.id);
+        // if (!user) { return res.status(404).json({ message: 'User not found'}); }
+
+        res.status(200).json({
+            id: req.user.id,
+            name: req.user.name,
+            email: req.user.email,
+        });
+    } catch (error) {
+         console.error("Error fetching user profile:", error);
+         res.status(500).json({ message: 'Server Error fetching profile' });
+    }
+
+};
 
 module.exports = {
   registerUser,
   loginUser,
-  // getMe,
+  getUserProfile,
 };

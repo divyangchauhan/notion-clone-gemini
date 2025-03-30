@@ -1,10 +1,7 @@
-import { useState, useEffect } from 'react'
-import { Routes, Route, Link, Navigate, useNavigate } from 'react-router-dom';
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route, Link, Navigate, useNavigate } from 'react-router-dom'; 
 import { useAuth } from './context/AuthContext'; 
 import ProtectedRoute from './components/ProtectedRoute'; 
+import './App.css'
 
 // --- Placeholder Pages/Components ---
 // In a real app, these would be in separate files in pages/ or components/
