@@ -118,6 +118,7 @@ dist
 # Server directory
 /server/node_modules
 /server/.env*
+!/server/.env.example
 
 # Client directory
 /client/node_modules
